@@ -1,4 +1,13 @@
-import { Body, Controller, Get, HttpCode, Logger, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpException,
+  HttpStatus,
+  Logger,
+  Post,
+} from '@nestjs/common';
 import { PokeGuessService } from './pokeGuess.service';
 
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -22,11 +31,13 @@ export class PokeGuessController {
     description: 'Success Api',
     type: TriviaQuestion,
   })
-  async getRandomPokemon(): Promise<TriviaQuestion> {
+  async getPokemonQuestion(): Promise<TriviaQuestion> {
+    this.logger.log('@getPokemonQuestion');
     try {
-      return await this.pokeGuessService.getPokemonQuestion();
+      return await this.pokeGuessService.createPokemonQuestion();
     } catch (e) {
       this.logger.error(e);
+      throw e;
     }
   }
 
@@ -42,10 +53,16 @@ export class PokeGuessController {
   })
   @HttpCode(200)
   async validateChoice(@Body() body: Answer): Promise<ValidatedAnswer> {
+    this.logger.log('@validateChoice');
     try {
+      // Don't allow missing body info provided
+      if (!body.pokemonId || !body.answer)
+        throw new HttpException('Body Not Provided', HttpStatus.BAD_REQUEST);
+
       return await this.pokeGuessService.validateAnswer(body);
     } catch (e) {
       this.logger.error(e);
+      throw e;
     }
   }
 }

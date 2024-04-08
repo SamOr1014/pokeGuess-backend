@@ -9,13 +9,12 @@ export class QuestionTransformer {
     this.logger = new Logger(QuestionTransformer.name);
   }
   transform(data: PokeApiRes[]): TriviaQuestion {
-    this.logger.log('Pokemon Data Transform');
+    this.logger.log('@transform');
     // random the correct Pokemon before sending to frontend
     const answerIdx = Math.floor(Math.random() * data.length);
     const answer = data[answerIdx];
     return {
       pokemonId: answer.id,
-      pokemonName: answer.name,
       pokemonCry: answer.cries.latest,
       pokemonImg: answer.sprites.front_default,
       pokemonNameList: data.map((pokemon) => {

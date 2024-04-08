@@ -1,11 +1,7 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { generateRandomFourId } from './utils/randomPokemonHelper';
 import { QuestionTransformer } from './questionTransformer';
-import { AxiosError } from 'axios';
+
 import { PokeGuessRepository } from './pokeGuess.repository';
 import { Answer } from './entities/Answer';
 import { ValidatedAnswer } from './entities/ValidatedAnswer';
@@ -23,6 +19,7 @@ export class PokeGuessService {
   }
 
   async validateAnswer(data: Answer): Promise<ValidatedAnswer> {
+    this.logger.log('@validateAnswer');
     try {
       const { pokemonId, answer } = data;
       const { name, sprites } = await this.pokeGuessRepository.fetchPokemon(
@@ -35,26 +32,35 @@ export class PokeGuessService {
         pokemonName: name,
       };
     } catch (e) {
-      throw new InternalServerErrorException(e);
+      this.logger.log('Catch Error @validateAnswer');
+      throw e;
     }
   }
 
-  async getPokemonQuestion(): Promise<TriviaQuestion> {
-    const pokemons = await this.getRandomPokemons();
-    return this.questionTransformer.transform(pokemons);
+  async createPokemonQuestion(): Promise<TriviaQuestion> {
+    this.logger.log('@getPokemonQuestion');
+    try {
+      const pokemons = await this.getRandomPokemons();
+      return this.questionTransformer.transform(pokemons);
+    } catch (e) {
+      this.logger.log('Catch Error @getPokemonQuestion');
+      throw e;
+    }
   }
 
   private async getRandomPokemons(): Promise<PokeApiRes[]> {
+    this.logger.log('@getRandomPokemons');
     const result = await Promise.allSettled(
-      generateRandomFourId().map(async (id) =>
-        this.pokeGuessRepository.fetchPokemon(id),
-      ),
+      generateRandomFourId().map(async (id) => {
+        return this.pokeGuessRepository.fetchPokemon(id);
+      }),
     );
     // Throw error when there is a rejected value
     const pokemonsInfo = result.map((val) => {
       if (val.status === 'rejected') {
-        throw new InternalServerErrorException(
-          (val.reason satisfies AxiosError).stack,
+        throw new HttpException(
+          'Found Rejected PokeAPI fetch',
+          HttpStatus.BAD_GATEWAY,
         );
       }
       return val.value;

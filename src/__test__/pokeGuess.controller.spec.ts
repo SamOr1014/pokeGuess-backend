@@ -9,7 +9,6 @@ describe('pokeGuess Controller', () => {
   const mockServiceRes: TriviaQuestion = {
     pokemonId: 1,
     pokemonCry: 'cry url',
-    pokemonName: 'name',
     pokemonImg: 'url',
     pokemonNameList: ['a', 'b', 'c', 'd'],
   };
@@ -17,13 +16,13 @@ describe('pokeGuess Controller', () => {
     const { unit } = TestBed.create(PokeGuessController)
       .mock(PokeGuessService)
       .using({
-        getPokemonQuestion: async () => mockServiceRes,
+        createPokemonQuestion: async () => mockServiceRes,
       })
       .compile();
 
     controller = unit;
   });
   it('Controller return', async () => {
-    expect(await controller.getRandomPokemon()).toStrictEqual(mockServiceRes);
+    expect(await controller.getPokemonQuestion()).toStrictEqual(mockServiceRes);
   });
 });

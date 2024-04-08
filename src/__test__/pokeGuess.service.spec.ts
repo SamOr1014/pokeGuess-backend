@@ -10,7 +10,6 @@ import { ValidatedAnswer } from '../pokeGuess/entities/ValidatedAnswer';
 const mockQuestion: TriviaQuestion = {
   pokemonId: 1,
   pokemonCry: 'cry url',
-  pokemonName: 'name',
   pokemonImg: 'url',
   pokemonNameList: ['a', 'b', 'c', 'd'],
 };
@@ -55,7 +54,7 @@ describe('pokeGuess Service', () => {
     service = unit;
   });
   it('getPokemonQuestion', async () => {
-    expect(await service.getPokemonQuestion()).toStrictEqual(mockQuestion);
+    expect(await service.createPokemonQuestion()).toStrictEqual(mockQuestion);
   });
   it('getPokemonQuestion', async () => {
     expect(await service.validateAnswer(mockAnswer)).toStrictEqual(
