@@ -13,7 +13,7 @@ export class PokeGuessController {
     this.logger = new Logger(PokeGuessController.name);
   }
 
-  @Get('/random')
+  @Get('/question')
   @ApiOperation({
     summary: 'Get a question of Pokemon Trivia',
   })
