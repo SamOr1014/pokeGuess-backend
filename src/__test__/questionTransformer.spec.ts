@@ -1,8 +1,8 @@
 import { TestBed } from '@automock/jest';
-import { PokemonAPIResponse } from '../pokeGuess/types';
 import { QuestionTransformer } from '../pokeGuess/questionTransformer';
+import { PokeApiRes } from '../pokeGuess/entities/PokeApiRes';
 
-const mockApiRes: PokemonAPIResponse[] = [
+const mockApiRes: PokeApiRes[] = [
   {
     id: 1,
     name: 'asd',

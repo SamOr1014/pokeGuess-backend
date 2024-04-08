@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { PokemonAPIResponse, PokemonTransformedData } from './types';
+import { TriviaQuestion } from './entities/TriviaQuestion';
+import { PokeApiRes } from './entities/PokeApiRes';
 
 @Injectable()
 export class QuestionTransformer {
@@ -7,7 +8,7 @@ export class QuestionTransformer {
   constructor() {
     this.logger = new Logger(QuestionTransformer.name);
   }
-  transform(data: PokemonAPIResponse[]): PokemonTransformedData {
+  transform(data: PokeApiRes[]): TriviaQuestion {
     this.logger.log('Pokemon Data Transform');
     // random the correct Pokemon before sending to frontend
     const answerIdx = Math.floor(Math.random() * data.length);

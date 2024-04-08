@@ -1,13 +1,16 @@
 import { TestBed } from '@automock/jest';
-import { PokemonTransformedData } from '../pokeGuess/types';
 import { PokeGuessService } from '../pokeGuess/pokeGuess.service';
 import { QuestionTransformer } from '../pokeGuess/questionTransformer';
-import { HttpService } from '@nestjs/axios';
+import { PokeGuessRepository } from '../pokeGuess/pokeGuess.repository';
+import { TriviaQuestion } from '../pokeGuess/entities/TriviaQuestion';
+
 describe('pokeGuess Service', () => {
   let service: PokeGuessService;
 
-  const mockServiceRes: PokemonTransformedData = {
+  const mockServiceRes: TriviaQuestion = {
     pokemonId: 1,
+    pokemonCry: 'cry url',
+    pokemonName: 'name',
     pokemonImg: 'url',
     pokemonNameList: ['a', 'b', 'c', 'd'],
   };
@@ -18,11 +21,9 @@ describe('pokeGuess Service', () => {
       .using({
         transform: async () => mockServiceRes,
       })
-      .mock(HttpService)
+      .mock(PokeGuessRepository)
       .using({
-        axiosRef: {
-          get: async () => [],
-        },
+        fetchPokemon: async () => [],
       })
       .compile();
 
