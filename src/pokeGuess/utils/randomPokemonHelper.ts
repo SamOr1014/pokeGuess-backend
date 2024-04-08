@@ -7,6 +7,11 @@ export const generateRandomId: () => number = () => {
 export const generateRandomFourId: () => Array<number> = () => {
   const result = [];
   for (let i = 0; i < 4; i++) {
+    let generatedId = generateRandomId();
+    // prevent same random number
+    while (result.includes(generatedId)) {
+      generatedId = generateRandomId();
+    }
     result.push(generateRandomId());
   }
   return result;

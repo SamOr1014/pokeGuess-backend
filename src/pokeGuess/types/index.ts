@@ -1,15 +1,15 @@
 export type PokemonTransformedData = {
   pokemonId: number;
   pokemonName?: string;
+  pokemonCry?: string;
   pokemonImg: string;
   pokemonNameList: string[];
 };
 
 export type PokemonAPIResponse = {
-  // cries: {
-  //   latest: string | null;
-  //   legacy: string | null;
-  // };
+  cries: {
+    latest: string | null;
+  };
   id: number;
   name: string;
   sprites: {

@@ -11,10 +11,12 @@ export class QuestionTransformer {
     this.logger.log('Pokemon Data Transform');
     // random the correct Pokemon before sending to frontend
     const answerIdx = Math.floor(Math.random() * data.length);
+    const answer = data[answerIdx];
     return {
-      pokemonId: data[answerIdx].id,
-      pokemonName: data[answerIdx].name,
-      pokemonImg: data[answerIdx].sprites.front_default,
+      pokemonId: answer.id,
+      pokemonName: answer.name,
+      pokemonCry: answer.cries.latest,
+      pokemonImg: answer.sprites.front_default,
       pokemonNameList: data.map((pokemon) => {
         return pokemon.name;
       }),
