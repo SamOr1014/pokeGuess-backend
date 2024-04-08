@@ -22,9 +22,11 @@ Before starting the app, remember to add a `.env` file and you can reference the
 
 add `--coverage` flag if you wanna check coverage
 
-### Run on Docker
+### Run on Docker (Dockerised production build)
 
-...In Progress
+`yarn compose`
+
+if your interested in the command checkout package.json
 
 ## API Design
 
