@@ -9,7 +9,6 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-
 RUN yarn build
 
 EXPOSE 8080
