@@ -1,17 +1,18 @@
 import { TestBed } from '@automock/jest';
 import { PokeGuessRepository } from '../pokeGuess/pokeGuess.repository';
 import { HttpService } from '@nestjs/axios';
+import { PokeApiRes } from '../pokeGuess/entities/PokeApiRes';
 
 describe('pokeGuess Service', () => {
   let repo: PokeGuessRepository;
-  const mockData = {
+  const mockData: PokeApiRes = {
     cries: {
-      latest: 'cryurl',
+      latest: 'cry.url',
     },
     id: 1,
     name: 'name',
     sprites: {
-      front_default: 'sprites url',
+      front_default: 'sprites.url',
     },
   };
 

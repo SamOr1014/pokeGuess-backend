@@ -9,8 +9,8 @@ import { ValidatedAnswer } from '../pokeGuess/entities/ValidatedAnswer';
 
 const mockQuestion: TriviaQuestion = {
   pokemonId: 1,
-  pokemonCry: 'cry url',
-  pokemonImg: 'url',
+  pokemonCry: 'cry.url',
+  pokemonImg: 'img.url',
   pokemonNameList: ['a', 'b', 'c', 'd'],
 };
 
@@ -21,18 +21,18 @@ const mockAnswer: Answer = {
 
 const mockApiRes: PokeApiRes = {
   cries: {
-    latest: 'cryurl',
+    latest: 'cry.url',
   },
   id: 1,
   name: 'correct',
   sprites: {
-    front_default: 'sprites url',
+    front_default: 'sprites.url',
   },
 };
 
 const expectedValidate: ValidatedAnswer = {
   correct: false,
-  image: 'sprites url',
+  image: 'sprites.url',
   pokemonName: 'correct',
 };
 
