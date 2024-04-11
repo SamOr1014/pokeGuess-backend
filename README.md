@@ -1,8 +1,8 @@
-#PokeGuess Backend
+# PokeGuess Backend
 
 ## Description
 
-This is a backend API server written with [Nest.js](https://nestjs.com/). This Api is suggested to be used with the frontend web application [here](https://github.com/SamOr1014/pokeGuess-frontend)
+This is a backend API server written with [Nest.js](https://nestjs.com/). This application is suggested to be used with the frontend web application [here](https://github.com/SamOr1014/pokeGuess-frontend)
 
 ## Usage
 
@@ -21,6 +21,25 @@ Before starting the app, remember to add a `.env` file and you can reference the
 `yarn test`
 
 add `--coverage` flag if you wanna check coverage
+
+#### Current Coverage
+
+| File                       | % Stmts   | % Branch   | % Funcs   | % Lines   | Uncovered Line #s   |
+| -------------------------- | --------- | ---------- | --------- | --------- | ------------------- |
+| All files                  | 88.28     | 50         | 100       | 87        |
+| pokeGuess                  | 86.41     | 50         | 100       | 84.93     |
+| pokeGuess.controller.ts    | 80        | 66.66      | 100       | 78.26     | 39-40,60,64-65      |
+| pokeGuess.repository.ts    | 93.33     | 100        | 100       | 92.3      | 26                  |
+| pokeGuess.service.ts       | 83.87     | 0          | 100       | 82.75     | 35-36,46-47,61      |
+| questionTransformer.ts     | 100       | 100        | 100       | 100       |
+| pokeGuess/entities         | 93.75     | 100        | 100       | 93.75     |
+| Answer.ts                  | 100       | 100        | 100       | 100       |
+| PokeApiRes.ts              | 0         | 100        | 100       | 0         | 9                   |
+| TriviaQuestion.ts          | 100       | 100        | 100       | 100       |
+| ValidatedAnswer.ts         | 100       | 100        | 100       | 100       |
+| pokeGuess/utils            | 92.85     | 100        | 100       | 90.9      |
+| randomPokemonHelper.ts     | 92.85     | 100        | 100       | 90.9      | 13                  |
+| -------------------------- | --------- | ---------- | --------- | --------- | ------------------- |
 
 ### Run on Docker (Dockerised production build)
 

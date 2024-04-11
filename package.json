@@ -77,7 +77,8 @@
     ],
     "coveragePathIgnorePatterns": [
       ".module.ts",
-      "/config/"
+      "/config/",
+      "main"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
