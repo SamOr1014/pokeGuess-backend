@@ -4,7 +4,7 @@ import { Logger } from '@nestjs/common';
 import { SwaggerModule } from '@nestjs/swagger';
 import { config as swaggerConfig } from './config/swagger';
 
-const PORT = 8081;
+const PORT = 8080;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   SwaggerModule.setup(
