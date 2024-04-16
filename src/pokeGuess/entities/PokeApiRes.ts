@@ -6,6 +6,14 @@ class Sprites {
   front_default: string | null;
 }
 
+class Types {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
+
 export class PokeApiRes {
   cries: Cries;
 
@@ -14,4 +22,10 @@ export class PokeApiRes {
   name: string;
 
   sprites: Sprites;
+
+  types: Types[];
+
+  weight: number;
+
+  height: number;
 }

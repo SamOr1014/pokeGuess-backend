@@ -14,6 +14,17 @@ describe('pokeGuess Service', () => {
     sprites: {
       front_default: 'sprites.url',
     },
+    types: [
+      {
+        slot: 1,
+        type: {
+          name: 'test',
+          url: 'type_url',
+        },
+      },
+    ],
+    weight: 100,
+    height: 110,
   };
 
   beforeAll(() => {

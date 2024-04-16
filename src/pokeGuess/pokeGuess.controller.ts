@@ -14,6 +14,7 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Answer } from './entities/Answer';
 import { ValidatedAnswer } from './entities/ValidatedAnswer';
 import { TriviaQuestion } from './entities/TriviaQuestion';
+import { PokemonInfo } from './entities/PokemonInfo';
 
 @Controller('/pokeGuess')
 export class PokeGuessController {
@@ -34,7 +35,7 @@ export class PokeGuessController {
   async getPokemonQuestion(): Promise<TriviaQuestion> {
     this.logger.log('@getPokemonQuestion');
     try {
-      return await this.pokeGuessService.createPokemonQuestion();
+      return await this.pokeGuessService.getPokemonQuestion();
     } catch (e) {
       this.logger.error(e);
       throw e;
@@ -60,6 +61,17 @@ export class PokeGuessController {
         throw new HttpException('Body Not Provided', HttpStatus.BAD_REQUEST);
 
       return await this.pokeGuessService.validateAnswer(body);
+    } catch (e) {
+      this.logger.error(e);
+      throw e;
+    }
+  }
+
+  @Get('/learn')
+  async getPokemonInfo(): Promise<PokemonInfo> {
+    this.logger.log('@getPokemonInfo');
+    try {
+      return await this.pokeGuessService.getRandomPokemonInfo();
     } catch (e) {
       this.logger.error(e);
       throw e;

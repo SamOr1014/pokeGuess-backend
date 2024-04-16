@@ -1,5 +1,5 @@
 import { TestBed } from '@automock/jest';
-import { QuestionTransformer } from '../pokeGuess/questionTransformer';
+import { QuestionTransformer } from '../pokeGuess/transformers/questionTransformer';
 import { PokeApiRes } from '../pokeGuess/entities/PokeApiRes';
 
 const mockApiRes: PokeApiRes[] = [
@@ -10,6 +10,17 @@ const mockApiRes: PokeApiRes[] = [
     cries: {
       latest: 'cry',
     },
+    types: [
+      {
+        slot: 1,
+        type: {
+          name: 'test',
+          url: 'type_url',
+        },
+      },
+    ],
+    weight: 100,
+    height: 100,
   },
   {
     id: 2,
@@ -18,6 +29,17 @@ const mockApiRes: PokeApiRes[] = [
     cries: {
       latest: 'cry',
     },
+    types: [
+      {
+        slot: 1,
+        type: {
+          name: 'test',
+          url: 'type_url',
+        },
+      },
+    ],
+    weight: 70,
+    height: 70,
   },
   {
     id: 3,
@@ -26,6 +48,17 @@ const mockApiRes: PokeApiRes[] = [
     cries: {
       latest: 'cry',
     },
+    types: [
+      {
+        slot: 1,
+        type: {
+          name: 'test',
+          url: 'type_url',
+        },
+      },
+    ],
+    weight: 80,
+    height: 80,
   },
   {
     id: 4,
@@ -34,6 +67,17 @@ const mockApiRes: PokeApiRes[] = [
     cries: {
       latest: 'cry',
     },
+    types: [
+      {
+        slot: 1,
+        type: {
+          name: 'test',
+          url: 'type_url',
+        },
+      },
+    ],
+    weight: 50,
+    height: 50,
   },
 ];
 

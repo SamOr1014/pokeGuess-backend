@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { TriviaQuestion } from './entities/TriviaQuestion';
-import { PokeApiRes } from './entities/PokeApiRes';
+import { TriviaQuestion } from '../entities/TriviaQuestion';
+import { PokeApiRes } from '../entities/PokeApiRes';
 
 @Injectable()
 export class QuestionTransformer {

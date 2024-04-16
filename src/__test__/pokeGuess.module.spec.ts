@@ -3,7 +3,7 @@ import { PokeGuessModule } from '../pokeGuess/pokeGuess.module';
 import { PokeGuessController } from '../pokeGuess/pokeGuess.controller';
 import { PokeGuessRepository } from '../pokeGuess/pokeGuess.repository';
 import { PokeGuessService } from '../pokeGuess/pokeGuess.service';
-import { QuestionTransformer } from '../pokeGuess/questionTransformer';
+import { QuestionTransformer } from '../pokeGuess/transformers/questionTransformer';
 import { ConfigModule } from '@nestjs/config';
 
 describe('CatsController', () => {

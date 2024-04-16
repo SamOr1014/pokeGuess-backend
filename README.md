@@ -24,22 +24,18 @@ add `--coverage` flag if you wanna check coverage
 
 #### Current Coverage
 
-| File                       | % Stmts   | % Branch   | % Funcs   | % Lines   | Uncovered Line #s   |
-| -------------------------- | --------- | ---------- | --------- | --------- | ------------------- |
-| All files                  | 88.28     | 50         | 100       | 87        |
-| pokeGuess                  | 86.41     | 50         | 100       | 84.93     |
-| pokeGuess.controller.ts    | 80        | 66.66      | 100       | 78.26     | 39-40,60,64-65      |
-| pokeGuess.repository.ts    | 93.33     | 100        | 100       | 92.3      | 26                  |
-| pokeGuess.service.ts       | 83.87     | 0          | 100       | 82.75     | 35-36,46-47,61      |
-| questionTransformer.ts     | 100       | 100        | 100       | 100       |
-| pokeGuess/entities         | 93.75     | 100        | 100       | 93.75     |
-| Answer.ts                  | 100       | 100        | 100       | 100       |
-| PokeApiRes.ts              | 0         | 100        | 100       | 0         | 9                   |
-| TriviaQuestion.ts          | 100       | 100        | 100       | 100       |
-| ValidatedAnswer.ts         | 100       | 100        | 100       | 100       |
-| pokeGuess/utils            | 92.85     | 100        | 100       | 90.9      |
-| randomPokemonHelper.ts     | 92.85     | 100        | 100       | 90.9      | 13                  |
-| -------------------------- | --------- | ---------- | --------- | --------- | ------------------- |
+| File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s    |
+| ----------------------- | ------- | -------- | ------- | ------- | -------------------- |
+| All files               | 86.32   | 50       | 100     | 84.61   |
+| pokeGuess               | 82.35   | 50       | 100     | 81.01   |
+| pokeGuess.controller.ts | 77.41   | 66.66    | 100     | 75.86   | 40-41,61,65-66,76-77 |
+| pokeGuess.repository.ts | 93.33   | 100      | 100     | 92.3    | 26                   |
+| pokeGuess.service.ts    | 82.05   | 0        | 100     | 81.08   | 35-36,54-55,65-66,80 |
+| pokeGuess/transformers  | 100     | 100      | 100     | 100     |
+| pokemonTransformer.ts   | 100     | 100      | 100     | 100     |
+| questionTransformer.ts  | 100     | 100      | 100     | 100     |
+| pokeGuess/utils         | 92.85   | 100      | 100     | 90.9    |
+| randomPokemonHelper.ts  | 92.85   | 100      | 100     | 90.9    | 13                   |
 
 ### Run on Docker (Dockerised production build)
 
