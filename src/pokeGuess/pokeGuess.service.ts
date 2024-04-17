@@ -59,7 +59,7 @@ export class PokeGuessService {
   async getPokemonQuestion(): Promise<TriviaQuestion> {
     this.logger.log('@getPokemonQuestion');
     try {
-      const pokemons = await this.getRandomPokemonInfos();
+      const pokemons = await this.generatePokemons();
       return this.questionTransformer.transform(pokemons);
     } catch (e) {
       this.logger.log('Catch Error @getPokemonQuestion');
@@ -67,8 +67,8 @@ export class PokeGuessService {
     }
   }
 
-  private async getRandomPokemonInfos(): Promise<PokeApiRes[]> {
-    this.logger.log('@getRandomPokemonInfos');
+  private async generatePokemons(): Promise<PokeApiRes[]> {
+    this.logger.log('@generatePokemons');
     const result = await Promise.allSettled(
       generateRandomFourId().map(async (id) => {
         return this.pokeGuessRepository.fetchPokemon(id);
