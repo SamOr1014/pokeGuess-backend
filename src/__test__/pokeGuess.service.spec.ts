@@ -124,7 +124,6 @@ describe('pokeGuess Service - error handling', () => {
     try {
       await service.getPokemonQuestion();
     } catch (e) {
-      console.log('e', e);
       expect(e).toStrictEqual(
         new HttpException(
           'Found Rejected PokeAPI fetch',
