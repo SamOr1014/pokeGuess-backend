@@ -24,18 +24,18 @@ add `--coverage` flag if you wanna check coverage
 
 #### Current Coverage
 
-| File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s    |
-| ----------------------- | ------- | -------- | ------- | ------- | -------------------- |
-| All files               | 86.32   | 50       | 100     | 84.61   |
-| pokeGuess               | 82.35   | 50       | 100     | 81.01   |
-| pokeGuess.controller.ts | 77.41   | 66.66    | 100     | 75.86   | 40-41,61,65-66,76-77 |
-| pokeGuess.repository.ts | 93.33   | 100      | 100     | 92.3    | 26                   |
-| pokeGuess.service.ts    | 82.05   | 0        | 100     | 81.08   | 35-36,54-55,65-66,80 |
+| File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s |
+| ----------------------- | ------- | -------- | ------- | ------- | ----------------- |
+| All files               | 99.15   | 100      | 100     | 99.04   |
+| pokeGuess               | 100     | 100      | 100     | 100     |
+| pokeGuess.controller.ts | 100     | 100      | 100     | 100     |
+| pokeGuess.repository.ts | 100     | 100      | 100     | 100     |
+| pokeGuess.service.ts    | 100     | 100      | 100     | 100     |
 | pokeGuess/transformers  | 100     | 100      | 100     | 100     |
 | pokemonTransformer.ts   | 100     | 100      | 100     | 100     |
 | questionTransformer.ts  | 100     | 100      | 100     | 100     |
 | pokeGuess/utils         | 92.85   | 100      | 100     | 90.9    |
-| randomPokemonHelper.ts  | 92.85   | 100      | 100     | 90.9    | 13                   |
+| randomPokemonHelper.ts  | 92.85   | 100      | 100     | 90.9    | 13                |
 
 ### Run on Docker (Dockerised production build)
 

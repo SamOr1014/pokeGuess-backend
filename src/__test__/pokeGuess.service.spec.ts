@@ -8,6 +8,7 @@ import { PokeApiRes } from '../pokeGuess/entities/PokeApiRes';
 import { ValidatedAnswer } from '../pokeGuess/entities/ValidatedAnswer';
 import { PokemonTransformer } from '../pokeGuess/transformers/pokemonTransformer';
 import { PokemonInfo } from '../pokeGuess/entities/PokemonInfo';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 const mockQuestion: TriviaQuestion = {
   pokemonId: 1,
@@ -90,5 +91,60 @@ describe('pokeGuess Service', () => {
 
   it('getRandomPokemonInfo', async () => {
     expect(await service.getRandomPokemonInfo()).toStrictEqual(mockPokemonInfo);
+  });
+});
+describe('pokeGuess Service - error handling', () => {
+  let service: PokeGuessService;
+
+  beforeAll(() => {
+    const { unit } = TestBed.create(PokeGuessService)
+      .mock(QuestionTransformer)
+      .using({
+        transform: async () => {
+          throw new Error();
+        },
+      })
+      .mock(PokemonTransformer)
+      .using({
+        transform: async () => {
+          throw new Error();
+        },
+      })
+      .mock(PokeGuessRepository)
+      .using({
+        fetchPokemon: async () => {
+          throw new Error();
+        },
+      })
+      .compile();
+
+    service = unit;
+  });
+  it('getPokemonQuestion', async () => {
+    try {
+      await service.getPokemonQuestion();
+    } catch (e) {
+      console.log('e', e);
+      expect(e).toStrictEqual(
+        new HttpException(
+          'Found Rejected PokeAPI fetch',
+          HttpStatus.BAD_GATEWAY,
+        ),
+      );
+    }
+  });
+  it('getRandomPokemonInfo', async () => {
+    try {
+      await service.getRandomPokemonInfo();
+    } catch (e) {
+      expect(e).toStrictEqual(new Error());
+    }
+  });
+  it('getPokemonQuestion', async () => {
+    try {
+      await service.validateAnswer(mockAnswer);
+    } catch (e) {
+      expect(e).toStrictEqual(new Error());
+    }
   });
 });
