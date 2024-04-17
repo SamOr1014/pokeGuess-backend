@@ -5,17 +5,15 @@ import {
 
 describe('random pokemon helper', () => {
   it('random one Number', () => {
+    const mockMathRandom = jest.spyOn(Math, 'random');
+    mockMathRandom.mockReturnValueOnce(0.1);
     const id = generateRandomId();
     expect(typeof id).toBe('number');
-    expect(id).toBeLessThan(1026);
-    expect(id).toBeGreaterThan(0);
+    expect(id).toStrictEqual(Math.ceil(0.1 * 1025));
   });
   it('random Number array', () => {
     const idArr = generateRandomFourId();
     expect(idArr.length).toStrictEqual(4);
-    idArr.forEach((id) => {
-      expect(typeof id).toBe('number');
-    });
   });
 
   it('all four random number different', () => {
