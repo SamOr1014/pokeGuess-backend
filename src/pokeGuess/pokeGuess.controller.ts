@@ -44,8 +44,7 @@ export class PokeGuessController {
 
   @Post('/validate')
   @ApiOperation({
-    summary:
-      "Validate the answer. Receiving the correct Pokemon ID and the answered Pokemon's Name.",
+    summary: 'Validate the answer.',
   })
   @ApiResponse({
     status: 200,
@@ -68,6 +67,15 @@ export class PokeGuessController {
   }
 
   @Get('/learn')
+  @ApiOperation({
+    summary: 'Random Pokemon generated for user to learn!',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Success Api',
+    type: PokemonInfo,
+  })
+  @HttpCode(200)
   async getPokemonInfo(): Promise<PokemonInfo> {
     this.logger.log('@getPokemonInfo');
     try {
